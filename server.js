@@ -1,11 +1,9 @@
 // ENTRY-POINT FILE
 
-// bring in express
 const express = require("express");
-// bring in mongoose
 const mongoose = require("mongoose");
-//bring in body parser
 const bodyParser = require("body-parser");
+const passport = require("passport");
 
 // resource vars for routes
 const users = require("./routes/api/users");
@@ -27,8 +25,10 @@ mongoose
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err)); // log errors, ex. if URI un/pass are incorrect
 
-// simple route to homepage, just to get things going
-app.get("/", (req, res) => res.send("hello, there!"));
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./config/passport.js")(passport);
 
 // Use routes
 app.use("/api/users", users);
