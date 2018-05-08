@@ -4,14 +4,20 @@
 const express = require("express");
 // bring in mongoose
 const mongoose = require("mongoose");
+//bring in body parser
+const bodyParser = require("body-parser");
 
-// resource vars
+// resource vars for routes
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
 const posts = require("./routes/api/posts");
 
 // initialize app variable set to express
 const app = express();
+
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // DB config
 const db = require("./config/keys").mongoURI;
