@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Login extends Component {
   constructor() {
@@ -19,7 +20,7 @@ class Login extends Component {
   onSubmit(e) {
     e.preventDefault();
     const user = {
-      name: this.state.email,
+      email: this.state.email,
       password: this.state.password
     };
     console.log(user);
@@ -42,7 +43,7 @@ class Login extends Component {
                     className="form-control form-control-lg"
                     placeholder="Email Address"
                     name="email"
-                    value={this.email}
+                    value={this.state.email}
                     onChange={this.onChange}
                   />
                 </div>
@@ -52,7 +53,7 @@ class Login extends Component {
                     className="form-control form-control-lg"
                     placeholder="Password"
                     name="password"
-                    value={this.password}
+                    value={this.state.password}
                     onChange={this.onChange}
                   />
                 </div>
