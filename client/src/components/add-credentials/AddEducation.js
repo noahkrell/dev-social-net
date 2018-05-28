@@ -69,7 +69,9 @@ class AddEducation extends Component {
                 Go Back
               </Link>
               <h1 className="display-4 text-center">Add Education</h1>
-              <p className="lead text-center">Add any education below</p>
+              <p className="lead text-center">
+                Add any education below (school, bootcamp, etc.)
+              </p>
               <small className="d-block pb-3">* = required fields</small>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
@@ -80,14 +82,14 @@ class AddEducation extends Component {
                   error={errors.school}
                 />
                 <TextFieldGroup
-                  placeholder="Degree (Ex. Bachelor's)"
+                  placeholder="* Degree (Ex. Bachelor's)"
                   name="degree"
                   value={this.state.degree}
                   onChange={this.onChange}
                   error={errors.degree}
                 />
                 <TextFieldGroup
-                  placeholder="Field of Study (Ex. Computer Science"
+                  placeholder="* Field of Study (Ex. Computer Science"
                   name="fieldofstudy"
                   value={this.state.fieldofstudy}
                   onChange={this.onChange}
