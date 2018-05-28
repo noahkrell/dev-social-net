@@ -54,7 +54,20 @@ export const addExperience = (expData, history) => dispatch => {
     );
 };
 
-// delete profile
+// add education
+export const addEducation = (eduData, history) => dispatch => {
+  axios
+    .post("/api/profile/education", eduData)
+    .then(res => history.push("/dashboard"))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// delete profile and account
 export const deleteAccount = () => dispatch => {
   if (
     window.confirm("Are you sure you want to permanently delete your profile?")
