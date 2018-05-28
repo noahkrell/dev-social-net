@@ -1,3 +1,4 @@
+const isEmpty = require("../../validation/is-empty");
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
@@ -111,13 +112,32 @@ router.post(
     const profileFields = {};
     profileFields.user = req.user.id;
     if (req.body.handle) profileFields.handle = req.body.handle;
-    if (req.body.company) profileFields.company = req.body.company;
-    if (req.body.website) profileFields.website = req.body.website;
-    if (req.body.location) profileFields.location = req.body.location;
-    if (req.body.bio) profileFields.bio = req.body.bio;
+    if (isEmpty(req.body.company)) {
+      profileFields.company = null;
+    } else {
+      profileFields.company = req.body.company;
+    }
+    if (isEmpty(req.body.website)) {
+      profileFields.website = null;
+    } else {
+      profileFields.website = req.body.website;
+    }
+    if (isEmpty(req.body.location)) {
+      profileFields.location = null;
+    } else {
+      profileFields.location = req.body.location;
+    }
+    if (isEmpty(req.body.bio)) {
+      profileFields.bio = null;
+    } else {
+      profileFields.bio = req.body.bio;
+    }
     if (req.body.status) profileFields.status = req.body.status;
-    if (req.body.githubusername)
+    if (isEmpty(req.body.githubusername)) {
+      profileFields.githubusername = null;
+    } else {
       profileFields.githubusername = req.body.githubusername;
+    }
 
     // SKILLS split into array
     if (typeof req.body.skills !== "undefined") {

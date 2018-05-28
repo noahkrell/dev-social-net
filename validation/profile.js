@@ -19,9 +19,15 @@ module.exports = function validateProfileInput(data) {
   if (Validator.isEmpty(data.skills)) {
     errors.skills = "Skills field is required";
   }
+
   if (!isEmpty(data.website)) {
-    if (!Validator.isURL(data.website)) {
-      errors.website = "Invalid website URL";
+    if (
+      !Validator.isURL(data.website) ||
+      (data.website.indexOf("http://") !== 0 &&
+        data.website.indexOf("https://") !== 0)
+    ) {
+      errors.website =
+        "Invalid website URL (make sure it starts with 'http(s)://'";
     }
   }
 
