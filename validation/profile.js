@@ -27,7 +27,7 @@ module.exports = function validateProfileInput(data) {
         data.website.indexOf("https://") !== 0)
     ) {
       errors.website =
-        "Invalid website URL (make sure it starts with 'http(s)://'";
+        "Invalid website URL (make sure it starts with 'http(s)://')";
     }
   }
 
