@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   ADD_POST,
   GET_POSTS,
+  GET_POST,
   GET_ERRORS,
   POST_LOADING,
   DELETE_POST
@@ -33,6 +34,25 @@ export const getPosts = () => dispatch => {
     .then(res =>
       dispatch({
         type: GET_POSTS,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_POSTS,
+        payload: null
+      })
+    );
+};
+
+// get individual post
+export const getPost = id => dispatch => {
+  dispatch(setPostLoading());
+  axios
+    .get(`/api/posts/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_POST,
         payload: res.data
       })
     )
@@ -80,6 +100,24 @@ export const removeLike = id => dispatch => {
   axios
     .post(`/api/posts/unlike/${id}`)
     .then(res => dispatch(getPosts()))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// add comment
+export const addComment = (postId, commentData) => dispatch => {
+  axios
+    .post(`/api/posts/comment/${postId}`, commentData)
+    .then(res =>
+      dispatch({
+        type: GET_POST,
+        payload: res.data
+      })
+    )
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
