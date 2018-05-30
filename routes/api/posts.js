@@ -65,6 +65,7 @@ router.delete(
   "/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    console.log(req);
     Profile.findOne({ user: req.user.id }).then(profile => {
       // get remove index
       Post.findById(req.params.id)
