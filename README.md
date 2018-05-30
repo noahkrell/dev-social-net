@@ -1,6 +1,8 @@
 # Dev Social Net
 
-This is a social network app built using the MERN stack (MongoDB, Express, React, Redux, Node.js), as part of a class through Udemy.com.
+This is a social network app built using the MERN stack (MongoDB, Express, React, Redux, Node.js), as part of a class through Udemy.com. Scrolllll down for install instructions. Deployed to Heroku [here](https://devsocialnet.herokuapp.com/).
+
+![Homepage image](homepage.png)
 
 ## Getting started
 
